@@ -1,0 +1,55 @@
+/* Boilerplate stuff */
+
+html {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem; /* 18px */
+  background-color: #efefef;
+  color: #324047;
+}
+
+html,
+body,
+section {
+  height: 100%;
+}
+
+.container {
+  margin: auto;
+  padding: 30px 50px;
+}
+
+.container-songs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container-favorite-songs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.song {
+  padding: 50px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+  padding: 5px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-favorite {
+  margin-top: 70px;
+}
