@@ -1,0 +1,17 @@
+[
+    {
+        "title" : "first-song",
+        "artists" : [
+            "vinsen", "sarajevo"
+        ],
+        "url" : "www.first-song.url.com"
+    },
+    {
+        "title" : "second-song",
+        "artists" : [
+            "furfio", "jero"
+        ],
+        "url" : "www.second-song.url.com"
+    }
+
+]
