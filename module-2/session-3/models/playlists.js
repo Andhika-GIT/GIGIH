@@ -10,4 +10,15 @@ export const getPlaylistById = (id) => {
   return song;
 };
 
-export const addPlaylist = (name, artists) => {};
+export const addPlaylist = (title, artists, url) => {
+  const newSong = {
+    id: uuid(),
+    title,
+    artists,
+    url,
+  };
+
+  songs.push(newSong);
+
+  return newSong;
+};

@@ -1,5 +1,6 @@
 [
     {
+        "id": "1231asdkfjasofu02e028340234",
         "title" : "first-song",
         "artists" : [
             "vinsen", "sarajevo"
@@ -7,6 +8,7 @@
         "url" : "www.first-song.url.com"
     },
     {
+        "id": "asdfuksuf9239492348asdf",
         "title" : "second-song",
         "artists" : [
             "furfio", "jero"
