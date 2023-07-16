@@ -2,7 +2,7 @@ import {
   getAllPlaylists,
   getPlaylistById,
   addPlaylist,
-} from "../models/playlists";
+} from "../models/playlists.js";
 
 export const getAll = (req, res) => {
   try {

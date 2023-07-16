@@ -1,6 +1,6 @@
 import express from "express";
 
-import playlistsRouter from "../routes/playlists";
+import playlistsRouter from "../routes/playlists.js";
 
 export const startRest = () => {
   // Make express server
@@ -18,6 +18,6 @@ export const startRest = () => {
 
   // Start the server
   app.listen(3000, () => {
-    console.log(`Server running on port 3000`);
+    console.log("Server running on port 3000");
   });
 };

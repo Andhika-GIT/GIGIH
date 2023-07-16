@@ -1,7 +1,7 @@
 import express from "express";
 
 // controllers
-import { addNew, getAll, getDetail } from "../controllers/playlists";
+import { addNew, getAll, getDetail } from "../controllers/playlists.js";
 
 const router = express.Router();
 
