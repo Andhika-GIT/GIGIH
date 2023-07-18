@@ -5,7 +5,8 @@
         "artists" : [
             "vinsen", "sarajevo"
         ],
-        "url" : "www.first-song.url.com"
+        "url" : "www.first-song.url.com",
+        "played": 0
     },
     {
         "id": "asdfuksuf9239492348asdf",
@@ -13,7 +14,8 @@
         "artists" : [
             "furfio", "jero"
         ],
-        "url" : "www.second-song.url.com"
+        "url" : "www.second-song.url.com",
+        "played": 0
     }
 
 ]

@@ -11,11 +11,12 @@
     "uuid": "^9.0.0"
   },
   "type": "module",
+
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
   "scripts": {
     "dev": "npx nodemon index.js",
     "start": "node index.js"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
   }
 }

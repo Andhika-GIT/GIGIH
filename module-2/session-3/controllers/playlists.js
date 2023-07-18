@@ -1,6 +1,7 @@
 import {
   getAllPlaylists,
-  getPlaylistById,
+  getPlaylistByTitle,
+  playPlaylistByTitle,
   addPlaylist,
 } from "../models/playlists.js";
 
@@ -19,9 +20,25 @@ export const getAll = (req, res) => {
 };
 
 export const getDetail = (req, res) => {
-  const { id } = req.params;
+  const { title } = req.params;
 
-  const song = getPlaylistById(id);
+  const song = getPlaylistByTitle(title);
+
+  if (!song) {
+    return res.status(404).json({
+      message: "Song not found",
+    });
+  }
+
+  res.json({
+    data: song,
+  });
+};
+
+export const playSong = (req, res) => {
+  const { title } = req.params;
+
+  const song = playPlaylistByTitle(title);
 
   if (!song) {
     return res.status(404).json({
