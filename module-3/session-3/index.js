@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const bodyParser = require("body-parser");
 
 // setup connection
 const mongoose = require("mongoose");
@@ -19,6 +20,13 @@ db.on("connected", () => {
 const app = express();
 
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+// app.use("/api/v1/");
 
 app.listen(process.env.PORT, (req, res) => {
   console.log("server is running");
