@@ -1,15 +1,15 @@
 import React from "react";
 import "./songs.css";
 
-const AllSongs = () => {
-  const songsLoop = [1, 2, 3, 4, 5, 6];
+const FavoriteSongs = () => {
+  const songsLoop = [1, 2, 3];
   return (
     <div className="container">
       {songsLoop.map((item, index) => {
         return (
           <div className="card" key={index}>
             <img
-              src={`https://picsum.photos/id/${index + 10}/200`}
+              src={`https://picsum.photos/id/${index + 20}/200`}
               alt=""
               className="avatar"
             />
@@ -24,4 +24,4 @@ const AllSongs = () => {
   );
 };
 
-export default AllSongs;
+export default FavoriteSongs;
