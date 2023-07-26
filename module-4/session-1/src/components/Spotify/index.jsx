@@ -5,7 +5,7 @@ import FavoriteSongs from "./FavoriteSongs";
 const Spotify = () => {
   return (
     <>
-      <h1 style={{ color: "#9df9ef" }}>Spotify</h1>
+      <h1 style={{ color: "#1DB954" }}>Spotify</h1>
       <h3>All Songs</h3>
       <AllSongs />
       <h3>Favorite Songs</h3>
