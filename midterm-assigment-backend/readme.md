@@ -10,7 +10,7 @@ After setting up mongoDB, follow the instructions below
 - run `mongosh`, it should run the local server for mongoDB
 - run `use youtube` to create new database called "youtube"
 - run `load( "query/createCollections.js" )` to create 4 collections (video, product, user, comment)
-- run `npm
+- open new terminal and run `npm run start` to start local server
 
 ## **DATABASE STRUCTURE**
 
