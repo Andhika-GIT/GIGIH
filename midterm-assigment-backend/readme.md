@@ -1,6 +1,6 @@
 ## **SETUP FOR MONGODB ( PLEASE READ )**
 
-In order to write mongo command in your terminal, you need to install and configure mongo first in your . If you have not installed mongoDB yet, please watch this video first : https://youtu.be/oC6sKlhz0OE
+In order to write mongoDB command in your terminal, you need to install and configure mongoDB first in your operating system. If you have not installed mongoDB yet, please watch this video first : https://youtu.be/oC6sKlhz0OE
 
 After setting up mongoDB, follow the instructions below
 
