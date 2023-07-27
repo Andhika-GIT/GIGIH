@@ -1,4 +1,4 @@
-## **SETUP FOR MONGODB COMMAND ( PLEASE READ )**
+## **SETUP FOR MONGODB ( PLEASE READ )**
 
 In order to write mongo command in your terminal, you need to install and configure mongo first in your . If you have not installed mongoDB yet, please watch this video first : https://youtu.be/oC6sKlhz0OE
 
