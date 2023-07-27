@@ -61,6 +61,16 @@ After setting up mongoDB, follow the instructions below
 }
 ```
 
+## **API FLOW**
+
+```
+
+
+  REQUEST -----> ROUTES -----> CONTROLLER -----> MODEL -----> DATABASE
+
+
+```
+
 ## **API REQUEST AND RESPONSE**
 
 ### **GET `/api/v1/video-thumbnail`**
