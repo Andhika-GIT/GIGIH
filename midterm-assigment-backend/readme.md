@@ -10,6 +10,7 @@ After setting up mongoDB, follow the instructions below
 - run `mongosh`, it should run the local server for mongoDB
 - run `use youtube` to create new database called "youtube"
 - run `load( "query/createCollections.js" )` to create 4 collections (video, product, user, comment)
+- run `npm
 
 ## **DATABASE STRUCTURE**
 
@@ -62,7 +63,7 @@ After setting up mongoDB, follow the instructions below
 
 ## **API REQUEST AND RESPONSE**
 
-### **GET `/video-thumbnail`**
+### **GET `/api/v1/video-thumbnail`**
 
 Returns all videos thumbnail data.
 
@@ -89,7 +90,7 @@ Returns all videos thumbnail data.
 }
 ```
 
-### **GET `/comment/:videoId`**
+### **GET `/api/v1/comment/:videoId`**
 
 Returns all product list based on spesific video.
 
@@ -104,20 +105,20 @@ Returns all product list based on spesific video.
   **Content (Example):**
 
 ```
-{
-  product: [
-             {
-                id: asdf08108312
-                link: "www.product-link.com"
-                title: "product-title"
-                price: 125.200
-             },
-             ...
-            ]
-}
+  {
+    product: [
+              {
+                  id: asdf08108312
+                  link: "www.product-link.com"
+                  title: "product-title"
+                  price: 125.200
+              },
+              ...
+              ]
+  }
 ```
 
-### **GET `/comment/:videoId`**
+### **GET `/api/v1/comment/:videoId`**
 
 Returns all comments based on spesific video.
 
@@ -132,19 +133,19 @@ Returns all comments based on spesific video.
   **Content (Example):**
 
 ```
-{
-  comment: [
-             {
-                username: "vinsen"
-                comment: "great video"
-                timestamp: 1529644667834
-             },
-             ...
-            ]
-}
+  {
+    comment: [
+                {
+                    username: "vinsen"
+                    comment: "great video"
+                    timestamp: 1529644667834
+                },
+                ...
+              ]
+  }
 ```
 
-### **POST `/comment/`**
+### **POST `/api/v1/comment/:videoId`**
 
 Create new comment on spesific video and return the new object.
 
@@ -168,11 +169,11 @@ Create new comment on spesific video and return the new object.
   **Content (Example):**
 
 ```
-{
-  comment:  {
+  {
+    comment: {
                 username: "vinsen"
                 comment: "great video"
                 timestamp: 1529644667834
              },
-}
+  }
 ```
