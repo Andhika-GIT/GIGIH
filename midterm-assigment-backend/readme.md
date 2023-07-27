@@ -1,20 +1,70 @@
-#Users
+## **SETUP FOR MONGODB COMMAND ( PLEASE READ )**
 
-- User object
+In order to write mongo command in your terminal, you need to install and configure mongo first in your . If you have not installed mongoDB yet, please watch this video first : https://youtu.be/oC6sKlhz0OE
+
+After setting up mongoDB, follow the instructions below
+
+- clone this repo into your file directory
+- open your terminal and cd into your root project directory
+- run `npm install` ( make sure you have installed node as well )
+- run `mongosh`, it should run the local server for mongoDB
+- run `use youtube` to create new database called "youtube"
+- run `load( "query/createCollections.js" )` to create 4 collections (video, product, user, comment)
+
+## **DATABASE STRUCTURE**
+
+- Video
 
 ```
 {
-  id: integer
-  username: string
+  id: ObjectId
+  title: string
+  imageUrl: string
+}
+```
+
+- User
+
+```
+{
+  id: ObjectId
   email: string
-  created_at: datetime(iso 8601)
-  updated_at: datetime(iso 8601)
+  username: string
+  password: string
+  photo: string
 }
 ```
 
-## **GET /users**
+- Comment
 
-Returns all users in the system.
+```
+{
+  id: ObjectId
+  videoId: integer
+  userId: integer
+  username: string
+  comment: string
+  createdAt: datetime
+}
+```
+
+- Product
+
+```
+{
+  id: ObjectId
+  videoId: integer
+  title: string
+  price: string
+  link: string
+}
+```
+
+## **API REQUEST AND RESPONSE**
+
+### **GET `/video-thumbnail`**
+
+Returns all videos thumbnail data.
 
 - **URL Params**  
   None
@@ -24,440 +74,90 @@ Returns all users in the system.
   Content-Type: application/json
 - **Success Response:**
 - **Code:** 200  
-  **Content:**
+  **Content (Example):**
 
 ```
 {
-  users: [
-           {<user_object>},
-           {<user_object>},
-           {<user_object>}
+  video: [
+           {
+            id: asdf08108312
+            title: "video-1"
+            imageUrl: "http.imageurl.com"
+           },
+           ...
          ]
 }
 ```
 
-## **GET /users/:id**
+### **GET `/comment/:videoId`**
 
-Returns the specified user.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-- **Code:** 200  
-  **Content:** `{ <user_object> }`
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "User doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-## **GET /users/:id/orders**
-
-Returns all Orders associated with the specified user.
+Returns all product list based on spesific video.
 
 - **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-- **Code:** 200  
-  **Content:**
-
-```
-{
-  orders: [
-           {<order_object>},
-           {<order_object>},
-           {<order_object>}
-         ]
-}
-```
-
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "User doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-## **POST /users**
-
-Creates a new User and returns the new object.
-
-- **URL Params**  
-  None
-- **Headers**  
-  Content-Type: application/json
-- **Data Params**
-
-```
-  {
-    username: string,
-    email: string
-  }
-```
-
-- **Success Response:**
-- **Code:** 200  
-  **Content:** `{ <user_object> }`
-
-## **PATCH /users/:id**
-
-Updates fields on the specified user and returns the updated object.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**
-
-```
-  {
-  	username: string,
-    email: string
-  }
-```
-
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-- **Code:** 200  
-  **Content:** `{ <user_object> }`
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "User doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-## **DELETE /users/:id**
-
-Deletes the specified user.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-  - **Code:** 204
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "User doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-#Products
-
-- Product object
-
-```
-{
-  id: integer
-  name: string
-  cost: float(2)
-  available_quantity: integer
-  created_at: datetime(iso 8601)
-  updated_at: datetime(iso 8601)
-}
-```
-
-## **GET /products**
-
-Returns all products in the system.
-
-- **URL Params**  
-  None
+   _Required:_ `videoId=[integer]`
 - **Data Params**  
   None
 - **Headers**  
   Content-Type: application/json
 - **Success Response:**
 - **Code:** 200  
-  **Content:**
+  **Content (Example):**
 
 ```
 {
-  products: [
-           {<product_object>},
-           {<product_object>},
-           {<product_object>}
-         ]
-}
-```
-
-## **GET /products/:id**
-
-Returns the specified product.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-- **Code:** 200  
-  **Content:** `{ <product_object> }`
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "Product doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-## **GET /products/:id/orders**
-
-Returns all Orders associated with the specified product.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-- **Code:** 200  
-  **Content:**
-
-```
-{
-  orders: [
-           {<order_object>},
-           {<order_object>},
-           {<order_object>}
-         ]
-}
-```
-
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "Product doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-## **POST /products**
-
-Creates a new Product and returns the new object.
-
-- **URL Params**  
-  None
-- **Data Params**
-
-```
-  {
-    name: string
-    cost: float(2)
-    available_quantity: integer
-  }
-```
-
-- **Headers**  
-  Content-Type: application/json
-- **Success Response:**
-- **Code:** 200  
-  **Content:** `{ <product_object> }`
-
-## **PATCH /products/:id**
-
-Updates fields on the specified product and returns the updated object.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**
-
-```
-  {
-  	name: string
-    cost: float(2)
-    available_quantity: integer
-  }
-```
-
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-- **Code:** 200  
-  **Content:** `{ <product_object> }`
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "Product doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-## **DELETE /products/:id**
-
-Deletes the specified product.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-  - **Code:** 204
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "Product doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-#Orders
-
-- Order object
-
-```
-{
-  id: integer
-  user_id: <user_id>
-  total: float(2)
-  products: [
-              {
-                product: <product_id>,
-                quantity: integer
-              },
-              {
-                product: <product_id>,
-                quantity: integer
-              },
-              {
-                product: <product_id>,
-                quantity: integer
-              },
+  product: [
+             {
+                id: asdf08108312
+                link: "www.product-link.com"
+                title: "product-title"
+                price: 125.200
+             },
+             ...
             ]
-  created_at: datetime(iso 8601)
-  updated_at: datetime(iso 8601)
 }
 ```
 
-## **GET /orders**
+### **GET `/comment/:videoId`**
 
-Returns all users in the system.
+Returns all comments based on spesific video.
 
 - **URL Params**  
-  None
+   _Required:_ `videoId=[integer]`
 - **Data Params**  
   None
 - **Headers**  
   Content-Type: application/json
 - **Success Response:**
 - **Code:** 200  
-  **Content:**
+  **Content (Example):**
 
 ```
 {
-  orders: [
-           {<order_object>},
-           {<order_object>},
-           {<order_object>}
-         ]
+  comment: [
+             {
+                username: "vinsen"
+                comment: "great video"
+                timestamp: 1529644667834
+             },
+             ...
+            ]
 }
 ```
 
-## **GET /orders/:id**
+### **POST `/comment/`**
 
-Returns the specified order.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-- **Code:** 200  
-  **Content:** `{ <order_object> }`
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "Order doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-## **GET /orders/:id/products**
-
-Returns all Products associated with the specified order.
+Create new comment on spesific video and return the new object.
 
 - **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-- **Code:** 200  
-  **Content:**
+   _Required:_ `videoId=[integer]`
 
-```
-{
-  products: [
-           {<product_object>},
-           {<product_object>},
-           {<product_object>}
-         ]
-}
-```
-
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "Order doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-## **GET /orders/:id/user**
-
-Returns all Users associated with the specified order.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:** `{ <user_object> }`
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "Order doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-## **POST /orders**
-
-Creates a new Order and returns the new object.
-
-- **URL Params**  
-  None
-- **Data Params**
+* **Data Params**
 
 ```
   {
-  	user_id: <user_id>
-  	product: <product_id>,
-  	quantity: integer
+    videoId: integer,
+    username: string,
+    comment: string,
   }
 ```
 
@@ -465,52 +165,14 @@ Creates a new Order and returns the new object.
   Content-Type: application/json
 - **Success Response:**
 - **Code:** 200  
-  **Content:** `{ <order_object> }`
-
-## **PATCH /orders/:id**
-
-Updates fields on the specified order and returns the updated object.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**
+  **Content (Example):**
 
 ```
-  {
-  	product: <product_id>,
-  	quantity: integer
-  }
+{
+  comment:  {
+                username: "vinsen"
+                comment: "great video"
+                timestamp: 1529644667834
+             },
+}
 ```
-
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-- **Code:** 200  
-  **Content:** `{ <order_object> }`
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "Order doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
-
-## **DELETE /orders/:id**
-
-Deletes the specified order.
-
-- **URL Params**  
-  _Required:_ `id=[integer]`
-- **Data Params**  
-  None
-- **Headers**  
-  Content-Type: application/json  
-  Authorization: Bearer `<OAuth Token>`
-- **Success Response:**
-  - **Code:** 204
-- **Error Response:**
-  - **Code:** 404  
-    **Content:** `{ error : "Order doesn't exist" }`  
-    OR
-  - **Code:** 401  
-    **Content:** `{ error : error : "You are unauthorized to make this request." }`
