@@ -5,7 +5,7 @@ In order to write mongoDB command in your terminal, you need to install and conf
 After setting up mongoDB, follow the instructions below
 
 - clone this repo into your file directory
-- open your terminal and cd into your root project directory
+- open your terminal and cd into the root project directory
 - run `npm install` ( make sure you have installed node as well )
 - run `mongosh`, it should run the local server for mongoDB
 - run `use youtube` to create new database called "youtube"
@@ -15,7 +15,6 @@ After setting up mongoDB, follow the instructions below
 ## **DATABASE STRUCTURE**
 
 ![My Image](assets/database-structure.jpeg)
-
 
 ## **API FLOW**
 
