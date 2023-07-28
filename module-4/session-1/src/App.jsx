@@ -11,7 +11,7 @@ import HandsOn from "./components/HandsOn";
 function App() {
   return (
     <>
-      <HandsOn />
+      <Spotify />
     </>
   );
 }
