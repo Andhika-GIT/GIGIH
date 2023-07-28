@@ -1,6 +1,6 @@
 import React from "react";
 
-const Content = ({ data, size = 200 }) => {
+const Content = ({ family, size = 200 }) => {
   return (
     <div
       style={{
@@ -8,12 +8,15 @@ const Content = ({ data, size = 200 }) => {
         border: "1px solid",
         textAlign: "left",
         width: size,
+        marginBottom: "30px",
       }}
     >
-      <h1 style={{ color: "lightcoral" }}>{data.title}</h1>
+      <h3 style={{ color: "lightcoral" }}>{family.name}</h3>
+      <p style={{ color: "lightcoral" }}>{family.gender}</p>
+
       <img
         style={{ borderRadius: "50%", width: "100px" }}
-        src={data.image}
+        src={family.profile}
         alt=""
         className="avatar"
       />
