@@ -14,52 +14,8 @@ After setting up mongoDB, follow the instructions below
 
 ## **DATABASE STRUCTURE**
 
-- Video
+![My Image](assets/database-structure.jpeg)
 
-```
-{
-  id: ObjectId
-  title: string
-  imageUrl: string
-}
-```
-
-- User
-
-```
-{
-  id: ObjectId
-  email: string
-  username: string
-  password: string
-  photo: string
-}
-```
-
-- Comment
-
-```
-{
-  id: ObjectId
-  videoId: integer
-  userId: integer
-  username: string
-  comment: string
-  createdAt: datetime
-}
-```
-
-- Product
-
-```
-{
-  id: ObjectId
-  videoId: integer
-  title: string
-  price: string
-  link: string
-}
-```
 
 ## **API FLOW**
 
