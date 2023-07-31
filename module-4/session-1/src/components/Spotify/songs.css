@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 90px;
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.card h1 {
+  font-size: 18px;
+}
+
+.card .card-content {
+  padding: 10px;
+  text-align: left;
+}
+
+.card img {
+  border-radius: 5%;
+  width: 100%;
+}
