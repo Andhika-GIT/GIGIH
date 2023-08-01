@@ -1,20 +1,13 @@
-import './songs.css';
 import React from 'react';
 
-const Card = ({ totalSong }) => {
+const Card = ({ album = 'test' }) => {
   return (
-    <div className="container">
-      {totalSong.map((item, index) => {
-        return (
-          <div className="card" key={index}>
-            <img src={`https://picsum.photos/id/${index + 10}/200`} alt="" className="avatar" />
-            <div className="card-content">
-              <h1>song number {index + 1}</h1>
-              <p>this is a description for song number {index + 1}</p>
-            </div>
-          </div>
-        );
-      })}
+    <div className="card">
+      <img src={album.images[0].url} alt="" className="avatar" />
+      <div className="card-content">
+        <h1>{album.name}</h1>
+        <p>by {album.artists[0].name}</p>
+      </div>
     </div>
   );
 };
